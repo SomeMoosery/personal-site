@@ -42,6 +42,20 @@
   }
 }
 
+/* SVG text path marquee animation */
+.animate-textpath-marquee {
+  animation: textpath-scroll 20s linear infinite;
+}
+
+@keyframes textpath-scroll {
+  from {
+    startOffset: 0;
+  }
+  to {
+    startOffset: -1000;
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
