@@ -7,11 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cream': 'hsl(45, 78%, 89%)',
-        'navy': 'hsl(234, 46%, 30%)',
-        'accent-pink': '#ff6b9d',
-        'accent-gold': '#d4af37',
-        'warm-beige': 'hsl(45, 60%, 85%)',
+        'green': '#183f27',
+        'red': '#f2170a',
+        'cream': '#f4f3eb',
       },
       fontFamily: {
         'heading': ['"obviously-narrow"', 'Arial Narrow', 'Arial', 'sans-serif'],

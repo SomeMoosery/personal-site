@@ -31,23 +31,23 @@ export default function Menu() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold mb-4 font-heading text-navy">Menu</h2>
-          <div className="text-3xl text-accent-pink">〰〰〰</div>
+          <h2 className="text-5xl md:text-7xl font-bold mb-4 font-heading text-green">Menu</h2>
+          <div className="text-3xl text-red">〰〰〰</div>
         </div>
 
         {/* Menu Categories */}
         <div className="space-y-16">
           {menuCategories.map((category, idx) => (
-            <div key={idx} className="border-l-4 border-accent-pink pl-6">
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-heading text-navy">{category.title}</h3>
+            <div key={idx} className="border-l-4 border-red pl-6">
+              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-heading text-green">{category.title}</h3>
               <div className="space-y-6">
                 {category.items.map((item, itemIdx) => (
-                  <div key={itemIdx} className="border-b border-navy/20 pb-4 hover:border-accent-pink transition-colors">
+                  <div key={itemIdx} className="border-b-2 border-red/30 pb-4 hover:border-red transition-colors">
                     <div className="flex justify-between items-baseline mb-2">
-                      <h4 className="text-xl font-semibold font-heading text-navy">{item.name}</h4>
-                      <span className="text-xl font-heading font-bold text-accent-gold">{item.price}</span>
+                      <h4 className="text-xl font-semibold font-heading text-green">{item.name}</h4>
+                      <span className="text-xl font-heading font-bold text-red">{item.price}</span>
                     </div>
-                    <p className="text-navy/80 italic font-body">{item.description}</p>
+                    <p className="text-green/80 italic font-body">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -57,7 +57,7 @@ export default function Menu() {
 
         {/* Playful note */}
         <div className="mt-16 text-center">
-          <p className="text-lg font-heading text-navy">
+          <p className="text-lg font-heading text-green">
             ✦ Menu changes seasonally ✦
           </p>
         </div>

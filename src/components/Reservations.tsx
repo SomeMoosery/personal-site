@@ -28,16 +28,16 @@ export default function Reservations() {
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold mb-4 font-heading text-navy">Reservations</h2>
-          <div className="text-3xl text-accent-pink mb-4">〰〰〰</div>
-          <p className="text-lg font-body text-navy">Book your table for an unforgettable experience</p>
+          <h2 className="text-5xl md:text-7xl font-bold mb-4 font-heading text-green">Reservations</h2>
+          <div className="text-3xl text-red mb-4">〰〰〰</div>
+          <p className="text-lg font-body text-green">Book your table for an unforgettable experience</p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6 bg-warm-beige p-8 border-4 border-navy">
+        <form onSubmit={handleSubmit} className="space-y-6 bg-cream p-8 border-4 border-green">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-heading text-navy mb-2">
+              <label className="block text-sm font-heading text-green mb-2">
                 Name *
               </label>
               <input
@@ -46,13 +46,13 @@ export default function Reservations() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border-2 border-navy focus:outline-none focus:border-accent-pink transition-colors bg-cream font-body text-navy"
+                className="w-full px-4 py-3 border-2 border-green focus:outline-none focus:border-red transition-colors bg-cream font-body text-green"
                 placeholder="Your name"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-heading text-navy mb-2">
+              <label className="block text-sm font-heading text-green mb-2">
                 Email *
               </label>
               <input
@@ -61,13 +61,13 @@ export default function Reservations() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border-2 border-navy focus:outline-none focus:border-accent-pink transition-colors bg-cream font-body text-navy"
+                className="w-full px-4 py-3 border-2 border-green focus:outline-none focus:border-red transition-colors bg-cream font-body text-green"
                 placeholder="your@email.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-heading text-navy mb-2">
+              <label className="block text-sm font-heading text-green mb-2">
                 Phone *
               </label>
               <input
@@ -76,20 +76,20 @@ export default function Reservations() {
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border-2 border-navy focus:outline-none focus:border-accent-pink transition-colors bg-cream font-body text-navy"
+                className="w-full px-4 py-3 border-2 border-green focus:outline-none focus:border-red transition-colors bg-cream font-body text-green"
                 placeholder="(555) 123-4567"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-heading text-navy mb-2">
+              <label className="block text-sm font-heading text-green mb-2">
                 Guests *
               </label>
               <select
                 name="guests"
                 value={formData.guests}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border-2 border-navy focus:outline-none focus:border-accent-pink transition-colors bg-cream font-body text-navy"
+                className="w-full px-4 py-3 border-2 border-green focus:outline-none focus:border-red transition-colors bg-cream font-body text-green"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                   <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
@@ -98,7 +98,7 @@ export default function Reservations() {
             </div>
 
             <div>
-              <label className="block text-sm font-heading text-navy mb-2">
+              <label className="block text-sm font-heading text-green mb-2">
                 Date *
               </label>
               <input
@@ -107,12 +107,12 @@ export default function Reservations() {
                 required
                 value={formData.date}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border-2 border-navy focus:outline-none focus:border-accent-pink transition-colors bg-cream font-body text-navy"
+                className="w-full px-4 py-3 border-2 border-green focus:outline-none focus:border-red transition-colors bg-cream font-body text-green"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-heading text-navy mb-2">
+              <label className="block text-sm font-heading text-green mb-2">
                 Time *
               </label>
               <select
@@ -120,7 +120,7 @@ export default function Reservations() {
                 value={formData.time}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border-2 border-navy focus:outline-none focus:border-accent-pink transition-colors bg-cream font-body text-navy"
+                className="w-full px-4 py-3 border-2 border-green focus:outline-none focus:border-red transition-colors bg-cream font-body text-green"
               >
                 <option value="">Select time</option>
                 <option value="17:00">5:00 PM</option>
@@ -138,14 +138,14 @@ export default function Reservations() {
 
           <button
             type="submit"
-            className="w-full bg-accent-pink text-cream py-4 font-heading hover:bg-accent-gold transition-all duration-300 transform hover:scale-105 text-lg"
+            className="w-full bg-red text-white py-4 font-heading hover:bg-green transition-all duration-300 transform hover:scale-105 text-lg"
           >
             Request Reservation
           </button>
         </form>
 
         {/* Additional info */}
-        <div className="mt-8 text-center text-sm text-navy">
+        <div className="mt-8 text-center text-sm text-green">
           <p className="font-body">For parties of 9 or more, please call us at (555) 123-4567</p>
         </div>
       </div>

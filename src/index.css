@@ -9,8 +9,8 @@
   body {
     @apply m-0 overflow-x-hidden;
     font-family: 'obviously', Arial, sans-serif;
-    background-color: hsl(45, 78%, 89%);
-    color: hsl(234, 46%, 30%);
+    background-color: #f4f3eb;
+    color: #183f27;
     font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.5em;
@@ -22,6 +22,7 @@
     text-transform: uppercase;
     letter-spacing: -0.01em;
     line-height: 1.2em;
+    color: #183f27;
   }
 }
 

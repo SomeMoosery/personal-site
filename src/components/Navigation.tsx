@@ -5,15 +5,15 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-cream/95 backdrop-blur-sm z-50 border-b-2 border-navy">
+    <nav className="fixed top-0 left-0 right-0 bg-cream/95 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link
             to="/"
-            className="text-2xl font-bold font-heading text-navy hover:text-accent-pink transition-colors"
+            className="text-2xl font-bold font-heading text-green hover:text-red transition-colors"
           >
-            Restaurant
+            Home
           </Link>
 
           {/* Desktop Navigation */}
@@ -27,7 +27,7 @@ export default function Navigation() {
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-sm font-heading text-navy hover:text-accent-pink transition-colors"
+                className="text-2xl font-bold font-heading text-green hover:text-red transition-colors"
               >
                 {item.name}
               </Link>
@@ -37,7 +37,7 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-2xl text-navy"
+            className="md:hidden text-2xl text-green"
           >
             {isOpen ? '✕' : '☰'}
           </button>
@@ -56,7 +56,7 @@ export default function Navigation() {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-left py-2 text-sm font-heading text-navy hover:text-accent-pink transition-colors"
+                className="block w-full text-left py-2 text-2xl font-bold font-heading text-green hover:text-red transition-colors"
               >
                 {item.name}
               </Link>
