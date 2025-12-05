@@ -19,25 +19,60 @@ export default function About() {
             <div className="space-y-4">
               <h3 className="text-2xl font-bold font-heading text-red">Professional</h3>
               <p>
-                Founded in 2024, our restaurant brings together the best of modern culinary techniques
-                with a vibrant, welcoming atmosphere. We believe dining should be an experience that
-                delights all your senses.
+                I've been interested in building financial infrastructure since reading Joe Nocera's book "A Piece of the Action"
+                back in college. You grow up thinking that "finance" is just... the way it is. Some pseudo-governmental system that
+                you can either buy into, or not. I didn't realize that the 401(k), personal investing, credit cards... are all just products. 
               </p>
               <p>
-                Our team of passionate chefs sources the finest seasonal ingredients, crafting dishes
-                that are as beautiful as they are delicious.
+                At the same time, I (like any 2010s college guy) knew I could use Bitcoin to buy fake IDs for me and my friends.
+                I spent what's now $100,000+ on fake IDs by paying in BTC and ETH. I also starting thinking, "if a 401(k) is just a product,"
+                what's stopping crypto from eventually becoming as engrained is young peoples' minds so as to seem "automatic."
+              </p>
+              <p>
+                So began my venture into fintech. I started my career at{' '}<span className="text-red font-bold">Capital One</span>,
+                building standard CRUD APIs, sharpening my SWE fundamentals, and seeing how a "legacy" company worked.
+              </p>
+              <p>
+                After a few years, I felt I had the skill set to join a startup. I joined a consumer crypto startup{' '}<span className="text-red font-bold">cmorq (now OpenFi)</span>
+                as their first engineer. I built the mobile app's backend architecture, our wallet infrastructure powering 100,000+ wallets, onramps/offramps for both the US and Brazil,
+                and smart contracts processing 500,000+ transactions.
+              </p>
+              <p>
+                However, I knew there was a gap in my fintech experience. I'd experienced legacy, I'd experience pre-seed... I hadn't experienced scale.
+                I joined {' '}<span className="text-red font-bold">Brigit</span>, where I currently work, to scale our Instant Cash product to millions 
+                of users and billions of dollars in cash advances. I'm now leading a team of engineers towards a new B2B2C vertical, which I can't wait to share more about.
+              </p>
+              <p>
+                I spend my professional time tinkering with crypto, specifically stablecoins, and looking for ways to blend it with the
+                increasingly-autonomously economy we're barreling towards.
               </p>
             </div>
 
             <div className="space-y-4">
               <h3 className="text-2xl font-bold font-heading text-red">Personal</h3>
               <p>
-                We believe in sustainable sourcing, creative expression, and genuine hospitality.
-                Every dish tells a story, and every guest becomes part of our family.
+                I love to eat. I thought I loved to cook, which I do, but really... I love to eat. It's why I live in New York City, it's why my
+                Beli profile has over 800 ratings. It's why I like to exercise... so I can eat more.
               </p>
               <p>
-                From farm to table, we work with local producers to ensure the freshest ingredients
-                while supporting our community.
+                I'm very lucky to have a wife, Abby, who loves to do the same. Our catalogue of meals we excel at
+                runs deep - we've been been known to host "pot luck" dinners where we cook all the food and just ask
+                people to bring wine and/or dessert. It's gonna be better that way, trust us.
+              </p>
+              <p>
+                We're both ethnically New Jerseyan (half-Jewish, half-Italian), and our cooking mostly reflects that.
+                Pesto, pomodoro pasta, Sunday sauce (no, not gravy), chicken cutlets (schnitzel, if you will), hummus.
+                All homemade, from scratch. We have a system in the kitchen where we can churn out exceedingly delicious
+                meals as if we're working on a line.
+              </p>
+              <p>
+                Alright, enough about eating. I also try to do a bit of everything. I've been playing the piano since I was 6, I love to
+                exercise (jury's still out on if that's just so I can eat more), I'm getting into golf (my childhood baseball skills don't translate).
+                I'm really loving what I can create with AI because while I don't consider myself the most artistic, I do think I know what looks good.
+                Now, I can build it... or at least get close.
+              </p>
+              <p>
+                Oh, and once we get a dog, this site will become 99% dog pics, 1% resume.
               </p>
             </div>
           </div>
@@ -45,7 +80,7 @@ export default function About() {
           {/* Decorative element */}
           <div className="flex justify-center items-center space-x-8 py-12">
             <span className="text-4xl animate-spin-slow text-green">✦</span>
-            <span className="text-2xl font-heading text-green">EST. 2024</span>
+            <span className="text-2xl font-heading text-green">EST. 1996</span>
             <span className="text-4xl animate-spin-slow text-green">✦</span>
           </div>
         </div>

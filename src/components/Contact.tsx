@@ -15,9 +15,11 @@ export default function Contact() {
             <div className="text-4xl mb-4">📍</div>
             <h3 className="text-2xl font-bold font-heading text-green mb-4">Location</h3>
             <p className="text-lg font-body text-green">
-              123 Culinary Street
-              <br />
-              Brooklyn, NY 11201
+              <strong>Current:</strong> Brooklyn, NY 11249
+              <br/>
+              <strong>College:</strong> Madison, WI 53703
+              <br/>
+              <strong>Past:</strong> Gladstone, NJ 07934
             </p>
           </div>
 
@@ -26,10 +28,9 @@ export default function Contact() {
             <div className="text-4xl mb-4">⏰</div>
             <h3 className="text-2xl font-bold font-display uppercase mb-4">Hours</h3>
             <div className="space-y-2 text-lg">
-              <p><span className="font-semibold">Tue - Thu:</span> 5:00 PM - 10:00 PM</p>
-              <p><span className="font-semibold">Fri - Sat:</span> 5:00 PM - 11:00 PM</p>
-              <p><span className="font-semibold">Sunday:</span> 4:00 PM - 9:00 PM</p>
-              <p className="text-red font-bold">Closed Mondays</p>
+              <p><span className="font-semibold">Mon - Fri:</span> 5:30 AM - 10:00 PM</p>
+              <p><span className="font-semibold">Saturday:</span> 8:00 AM - 2:00 PM</p>
+              <p className="text-red font-bold">Closed Sundays</p>
             </div>
           </div>
 
@@ -38,7 +39,7 @@ export default function Contact() {
             <div className="text-4xl mb-4">📞</div>
             <h3 className="text-2xl font-bold font-display uppercase mb-4">Phone</h3>
             <a
-              href="tel:+15551234567"
+              href="tel:+19083077151"
               className="text-lg hover:text-red transition-colors"
             >
               (555) 123-4567
@@ -50,21 +51,20 @@ export default function Contact() {
             <div className="text-4xl mb-4">✉️</div>
             <h3 className="text-2xl font-bold font-display uppercase mb-4">Email</h3>
             <a
-              href="mailto:hello@restaurant.com"
+              href="mailto:carterklein13@gmail.com"
               className="text-lg hover:text-red transition-colors"
             >
-              hello@restaurant.com
+              carterklein13@gmail.com
             </a>
           </div>
         </div>
 
         {/* Social */}
         <div className="text-center">
-          <h3 className="text-2xl font-bold font-heading text-green mb-6">Follow Us</h3>
           <div className="flex justify-center space-x-8 text-3xl">
-            <a href="#" className="hover:text-red transition-colors">📷</a>
-            <a href="#" className="hover:text-red transition-colors">🐦</a>
-            <a href="#" className="hover:text-red transition-colors">📘</a>
+            <a href="https://www.instagram.com/kleinwinder/" className="hover:text-red transition-colors">📷</a>
+            <a href="https://x.com/kleinwinder" className="hover:text-red transition-colors">🐦</a>
+            <a href="https://www.linkedin.com/in/carter-klein13/" className="hover:text-red transition-colors">📘</a>
           </div>
         </div>
 
