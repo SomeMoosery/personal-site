@@ -42,7 +42,7 @@ export default function Contact() {
               href="tel:+19083077151"
               className="text-lg hover:text-red transition-colors"
             >
-              (555) 123-4567
+              (908) 307-7151
             </a>
           </div>
 

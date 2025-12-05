@@ -92,7 +92,7 @@ export default function Hero() {
           Carter Klein
         </h1>
         <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto font-body text-red mb-8">
-          Cooking up financial infra in Brooklyn, NY
+          <span className="text-sm font-bold font-heading text-red mt-2 inline-flex items-center justify-center px-2 py-1 border-2 border-red mr-3" style={{ borderRadius: '50% 45% 50% 45%', transform: 'rotate(-2deg)' }}>Brooklyn</span> Cooking up financial infrastructure <span className="text-sm font-bold font-heading text-red mt-2 inline-flex items-center justify-center px-2 py-1 border-2 border-red ml-3" style={{ borderRadius: '48% 52% 48% 52%', transform: 'rotate(1deg)' }}>New York City</span>
         </p>
 
         {/* Navigation links */}
@@ -139,7 +139,7 @@ export default function Hero() {
             }}
           >
             <textPath href="#wave-marquee-path" startOffset="0" method="stretch" spacing="exact">
-              Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰 Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰 Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰 Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰
+              Fresh ingredients 〰 modern technique 〰 classic dishes 〰 Fresh ingredients 〰 modern technique 〰 classic dishes 〰 Fresh ingredients 〰 modern technique 〰 classic dishes 〰 Fresh ingredients 〰 modern technique 〰 classic dishes 〰
               <animate
                 attributeName="startOffset"
                 from="0"
