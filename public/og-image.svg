@@ -2,11 +2,20 @@
   <rect width="1200" height="630" fill="#f4f3eb"/>
   <text
     x="600"
-    y="315"
+    y="390"
     font-family="Arial, sans-serif"
-    font-size="400"
+    font-size="300"
     font-weight="900"
     fill="#f2170a"
     text-anchor="middle"
     dominant-baseline="central">C</text>
+  <text
+    x="600"
+    y="470"
+    font-family="Arial, sans-serif"
+    font-size="48"
+    font-weight="700"
+    fill="#f2170a"
+    text-anchor="middle"
+    dominant-baseline="hanging">BKLYN ♦ 1996</text>
 </svg>
