@@ -29,18 +29,10 @@ export default function About() {
                 what's stopping crypto from eventually becoming as engrained is young peoples' minds so as to seem "automatic."
               </p>
               <p>
-                So began my venture into fintech. I started my career at{' '}<span className="text-red font-bold">Capital One</span>,
-                building standard CRUD APIs, sharpening my SWE fundamentals, and seeing how a "legacy" company worked.
-              </p>
-              <p>
-                After a few years, I felt I had the skill set to join a startup. I joined a consumer crypto startup{' '}<span className="text-red font-bold">cmorq (now OpenFi)</span>
-                as their first engineer. I built the mobile app's backend architecture, our wallet infrastructure powering 100,000+ wallets, onramps/offramps for both the US and Brazil,
-                and smart contracts processing 500,000+ transactions.
-              </p>
-              <p>
-                However, I knew there was a gap in my fintech experience. I'd experienced legacy, I'd experience pre-seed... I hadn't experienced scale.
-                I joined {' '}<span className="text-red font-bold">Brigit</span>, where I currently work, to scale our Instant Cash product to millions 
-                of users and billions of dollars in cash advances. I'm now leading a team of engineers towards a new B2B2C vertical, which I can't wait to share more about.
+                I didn't realize fintech has been around since the 60s, and I wanted to explore it from as many angles as I could.
+                I've spent time at a big bank <span className="text-red font-bold">(Capital One)</span>, as the first engineer at 
+                consumer crypto startup <span className="text-red font-bold">cmorq (now OpenFi)</span>, and now leading a new vertical at 
+                <span className="text-red font-bold"> Brigit</span> after scaling our flagship product through acquisition in 1/2025.
               </p>
               <p>
                 I spend my professional time tinkering with crypto, specifically stablecoins, and looking for ways to blend it with the
