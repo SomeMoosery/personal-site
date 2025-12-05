@@ -20,7 +20,7 @@ export default function Navigation() {
           <div className="hidden md:flex space-x-8">
             {[
               { name: 'Menu', path: '/menu' },
-              { name: 'Reservations', path: '/reservations' },
+              // { name: 'Reservations', path: '/reservations' },
               { name: 'About', path: '/about' },
               { name: 'Contact', path: '/contact' },
             ].map((item) => (

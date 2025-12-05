@@ -100,9 +100,9 @@ export default function Hero() {
           <Link to="/menu" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
             Menu
           </Link>
-          <Link to="/reservations" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
+          {/* <Link to="/reservations" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
             Reservations
-          </Link>
+          </Link> */}
           <Link to="/about" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
             About
           </Link>
@@ -159,12 +159,12 @@ export default function Hero() {
       </div>
 
       {/* CTA Button */}
-      <Link
+      {/* <Link
         to="/reservations"
         className="bg-red text-white px-8 py-4 text-lg font-heading hover:bg-green transition-all duration-300 transform hover:scale-105"
       >
         Book some time
-      </Link>
+      </Link> */}
 
       {/* Rotating element */}
       <div className="mt-12 animate-spin-slow text-6xl text-green">

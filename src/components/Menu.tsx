@@ -1,27 +1,25 @@
+import { Link } from 'react-router-dom';
+
 export default function Menu() {
   const menuCategories = [
     {
-      title: 'Starters',
+      title: 'Starters (unpolished thoughts)',
       items: [
-        { name: 'Crispy Brussels Sprouts', description: 'With honey glaze & toasted almonds', price: '$12' },
-        { name: 'Burrata & Heirloom Tomatoes', description: 'Fresh basil, olive oil, balsamic reduction', price: '$16' },
-        { name: 'Tuna Tartare', description: 'Avocado, crispy wontons, sesame-soy dressing', price: '$18' },
+        { name: 'Thoughts on Agent Vaults', description: 'How I\'m thinking about wallets, bank accounts... "vaults" for AI agents', price: 'June 2025', link: '/blog/thoughts-on-agent-vaults' },
       ],
     },
     {
-      title: 'Mains',
+      title: 'Mains (ideas I stand by)',
       items: [
-        { name: 'Grilled Ribeye', description: '12oz ribeye, herb butter, seasonal vegetables', price: '$38' },
-        { name: 'Pan-Seared Salmon', description: 'Lemon beurre blanc, asparagus, fingerling potatoes', price: '$32' },
-        { name: 'Wild Mushroom Risotto', description: 'Truffle oil, parmesan, microgreens', price: '$26' },
+        { name: 'Solving context bloat', description: 'Agents need to be able to spend/earn/budget/borrow/lend with other agents, automatically', price: 'December 2025' },
       ],
     },
     {
-      title: 'Desserts',
+      title: 'Desserts (food itineraries)',
       items: [
-        { name: 'Chocolate Lava Cake', description: 'Vanilla ice cream, raspberry coulis', price: '$12' },
-        { name: 'Lemon Tart', description: 'Fresh berries, whipped cream', price: '$10' },
-        { name: 'Affogato', description: 'Espresso, vanilla gelato, biscotti', price: '$9' },
+        { name: 'Enjoying the wait for Lucali\'s', description: 'Lucali\'s is an institution and rite of passage that I believe every New Yorker should do once. I only say that now because I\'ve done it - but I think you should too.', price: 'June 2025', link: 'https://substack.com/home/post/p-166198424', external: true },
+        { name: 'A day trip up to Beacon', description: 'I grew up in New Jersey and somehow never really went up this way as a kid. The Hudson Valley is beautiful, and Beacon is a short train away with tons of cool stuff to do. A great summer day trip!', price: 'June 2025', link: 'https://substack.com/home/post/p-166768691', external: true },
+        { name: 'A nostalgic Greenpoint morning', description: 'A mix of what\'s cool and what\'s not to give you a sense of home while reminding you why you live somewhere cool.', price: 'April 2025', link: 'https://substack.com/home/post/p-160675037', external: true },
       ],
     },
   ];
@@ -41,15 +39,43 @@ export default function Menu() {
             <div key={idx} className="border-l-4 border-red pl-6">
               <h3 className="text-3xl md:text-4xl font-bold mb-8 font-heading text-green">{category.title}</h3>
               <div className="space-y-6">
-                {category.items.map((item, itemIdx) => (
-                  <div key={itemIdx} className="border-b-2 border-red/30 pb-4 hover:border-red transition-colors">
-                    <div className="flex justify-between items-baseline mb-2">
-                      <h4 className="text-xl font-semibold font-heading text-green">{item.name}</h4>
-                      <span className="text-xl font-heading font-bold text-red">{item.price}</span>
+                {category.items.map((item, itemIdx) => {
+                  const content = (
+                    <>
+                      <div className="flex justify-between items-baseline mb-2">
+                        <h4 className="text-xl font-semibold font-heading text-green">{item.name}</h4>
+                        <span className="text-xl font-heading font-bold text-red">{item.price}</span>
+                      </div>
+                      <p className="text-green/80 italic font-body">{item.description}</p>
+                    </>
+                  );
+
+                  return 'link' in item && item.link ? (
+                    'external' in item && item.external ? (
+                      <a
+                        key={itemIdx}
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block border-b-2 border-red/30 pb-4 hover:border-red transition-colors cursor-pointer"
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <Link
+                        key={itemIdx}
+                        to={item.link}
+                        className="block border-b-2 border-red/30 pb-4 hover:border-red transition-colors cursor-pointer"
+                      >
+                        {content}
+                      </Link>
+                    )
+                  ) : (
+                    <div key={itemIdx} className="border-b-2 border-red/30 pb-4 hover:border-red transition-colors">
+                      {content}
                     </div>
-                    <p className="text-green/80 italic font-body">{item.description}</p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}
