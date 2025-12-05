@@ -30,17 +30,17 @@ export default function Hero() {
       </div>
 
       {/* Wavy Animated Marquee */}
-      <div className="w-full overflow-hidden bg-cream text-green py-20 mb-12 relative">
+      <div className="w-full overflow-hidden bg-cream text-green py-4 mb-6 relative">
         <svg
           className="w-full"
-          viewBox="0 0 2000 200"
+          viewBox="0 0 2000 180"
           preserveAspectRatio="xMidYMid slice"
-          style={{ height: '150px' }}
+          style={{ height: '110px' }}
         >
           <defs>
             <path
               id="wave-marquee-path"
-              d="M 0,100 Q 125,50 250,100 T 500,100 T 750,100 T 1000,100 T 1250,100 T 1500,100 T 1750,100 T 2000,100 T 2250,100 T 2500,100 T 2750,100 T 3000,100 T 3250,100 T 3500,100 T 3750,100 T 4000,100"
+              d="M 0,90 Q 125,50 250,90 T 500,90 T 750,90 T 1000,90 T 1250,90 T 1500,90 T 1750,90 T 2000,90 T 2250,90 T 2500,90 T 2750,90 T 3000,90 T 3250,90 T 3500,90 T 3750,90 T 4000,90"
               fill="none"
             />
           </defs>
@@ -48,14 +48,14 @@ export default function Hero() {
             fill="currentColor"
             className="text-green"
             style={{
-              fontSize: '56px',
+              fontSize: '52px',
               fontWeight: '800',
               textTransform: 'uppercase',
-              letterSpacing: '-0.01em',
+              letterSpacing: '0.1em',
               fontFamily: '"obviously-narrow", Arial Narrow, Arial, sans-serif'
             }}
           >
-            <textPath href="#wave-marquee-path" startOffset="0">
+            <textPath href="#wave-marquee-path" startOffset="0" method="stretch" spacing="exact">
               Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰 Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰 Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰 Fresh ingredients 〰 Bold flavors 〰 Unforgettable moments 〰
               <animate
                 attributeName="startOffset"
