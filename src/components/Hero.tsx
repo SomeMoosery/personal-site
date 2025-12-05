@@ -114,17 +114,17 @@ export default function Hero() {
 
       {/* Lottie Animation - Mobile: below rotating element, Desktop: bottom right */}
       <div className="mt-8 md:mt-0 md:absolute md:bottom-8 md:right-8 flex flex-col items-center">
-        <div className="cursor-pointer overflow-hidden" style={{ height: '250px', marginBottom: '-50px' }}>
+        <div className="cursor-pointer overflow-hidden" style={{ height: '175px', marginBottom: '-60px' }}>
           {/* @ts-ignore - web component */}
           <dotlottie-wc
             ref={lottieRef}
             src="https://lottie.host/dd10aa3e-1c62-43de-b554-80ef77c2de40/yCbNKVsaDn.lottie"
-            style={{ width: '300px', height: '300px' }}
+            style={{ width: '300px', height: '300px', marginTop: '-85px' }}
             loop
           />
         </div>
-        <p className="text-lg font-bold font-heading text-green mt-2">
-          Let's hear it
+        <p className="text-lg font-bold font-heading text-red mt-2">
+          Click for some ambiance
         </p>
       </div>
     </section>
