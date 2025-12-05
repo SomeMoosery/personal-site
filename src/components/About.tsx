@@ -11,13 +11,13 @@ export default function About() {
         {/* Story */}
         <div className="space-y-8 text-lg leading-relaxed font-body">
           <p className="text-2xl md:text-3xl font-light text-center mb-12 font-body">
-            Where <span className="text-red font-bold">culinary craft</span> meets{' '}
-            <span className="text-red font-bold">playful spirit</span>
+            I might not be <span className="text-red font-bold">bright,</span> but I am{' '}
+            <span className="text-red font-bold">sharp</span>
           </p>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold font-heading text-red">Our Story</h3>
+              <h3 className="text-2xl font-bold font-heading text-red">Professional</h3>
               <p>
                 Founded in 2024, our restaurant brings together the best of modern culinary techniques
                 with a vibrant, welcoming atmosphere. We believe dining should be an experience that
@@ -30,7 +30,7 @@ export default function About() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold font-heading text-red">Our Philosophy</h3>
+              <h3 className="text-2xl font-bold font-heading text-red">Personal</h3>
               <p>
                 We believe in sustainable sourcing, creative expression, and genuine hospitality.
                 Every dish tells a story, and every guest becomes part of our family.
@@ -47,15 +47,6 @@ export default function About() {
             <span className="text-4xl animate-spin-slow text-green">✦</span>
             <span className="text-2xl font-heading text-green">EST. 2024</span>
             <span className="text-4xl animate-spin-slow text-green">✦</span>
-          </div>
-
-          {/* Team callout */}
-          <div className="bg-cream text-green p-8 border-4 border-red">
-            <h3 className="text-2xl font-bold font-heading mb-4 text-center">Meet The Team</h3>
-            <p className="text-center">
-              Our talented chefs, sommeliers, and staff are dedicated to making every visit memorable.
-              Come say hello!
-            </p>
           </div>
         </div>
       </div>

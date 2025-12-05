@@ -184,12 +184,12 @@ export default function Hero() {
         </div>
         <p className="text-lg font-bold font-heading text-red mt-2">
           {!isAuthenticated
-            ? 'Click to connect Spotify'
+            ? 'Connect to Spotify and set the mood'
             : !isReady
             ? 'Loading player...'
             : isPlaying
-            ? 'Playing 🎵'
-            : 'Click for some ambiance'}
+            ? 'Now we\'re talking'
+            : 'Set the mood'}
         </p>
       </div>
     </section>
