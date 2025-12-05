@@ -95,7 +95,8 @@ export default function Hero() {
 
       {/* Decorative squiggles */}
       <div className="text-4xl text-red mb-8">
-        〰〰〰〰〰〰〰〰〰〰〰〰
+        <span className="hidden md:inline">〰〰〰〰〰〰</span>
+        <span>〰〰〰〰〰〰</span>
       </div>
 
       {/* CTA Button */}
@@ -111,15 +112,20 @@ export default function Hero() {
         ✦
       </div>
 
-      {/* Lottie Animation - Bottom Right */}
-      <div className="absolute bottom-8 right-8 cursor-pointer">
-        {/* @ts-ignore - web component */}
-        <dotlottie-wc
-          ref={lottieRef}
-          src="https://lottie.host/dd10aa3e-1c62-43de-b554-80ef77c2de40/yCbNKVsaDn.lottie"
-          style={{ width: '300px', height: '300px' }}
-          loop
-        />
+      {/* Lottie Animation - Mobile: below rotating element, Desktop: bottom right */}
+      <div className="mt-8 md:mt-0 md:absolute md:bottom-8 md:right-8 flex flex-col items-center">
+        <div className="cursor-pointer overflow-hidden" style={{ height: '250px', marginBottom: '-50px' }}>
+          {/* @ts-ignore - web component */}
+          <dotlottie-wc
+            ref={lottieRef}
+            src="https://lottie.host/dd10aa3e-1c62-43de-b554-80ef77c2de40/yCbNKVsaDn.lottie"
+            style={{ width: '300px', height: '300px' }}
+            loop
+          />
+        </div>
+        <p className="text-lg font-bold font-heading text-green mt-2">
+          Let's hear it
+        </p>
       </div>
     </section>
   );
