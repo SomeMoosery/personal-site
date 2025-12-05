@@ -11,44 +11,48 @@ export default function About() {
         {/* Story */}
         <div className="space-y-8 text-lg leading-relaxed font-body">
           <p className="text-2xl md:text-3xl font-light text-center mb-12 font-body">
-            I might not be <span className="text-red font-bold">bright,</span> but I am{' '}
-            <span className="text-red font-bold">sharp</span>
+            Not an <span className="text-red font-bold">Olympiad,</span> not a{' '}
+            <span className="text-red font-bold">schmuck.</span>
           </p>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-4">
               <h3 className="text-2xl font-bold font-heading text-red">Professional</h3>
               <p>
-                I've been interested in building financial infrastructure since reading Joe Nocera's book "A Piece of the Action"
-                back in college. You grow up thinking that "finance" is just... the way it is. Some pseudo-governmental system that
-                you can either buy into, or not. I didn't realize that the 401(k), personal investing, credit cards... are all just products. 
+                When I was 18, I thought that "finance" - 401(k)s, credit cards, ETFs, payment networks - was some longstanding,
+                pseudo-governmental infrastructure akin to telecoms or utilities. I was drawn to study this infra because,
+                unlike telecoms or utilties, you didn't just "sign up." You could optimize it and leverage it so that, frankly,
+                you could get an edge over others.
               </p>
               <p>
-                At the same time, I (like any 2010s college guy) knew I could use Bitcoin to buy fake IDs for me and my friends.
-                I spent what's now $100,000+ on fake IDs by paying in BTC and ETH. I also starting thinking, "if a 401(k) is just a product,"
-                what's stopping crypto from eventually becoming as engrained is young peoples' minds so as to seem "automatic."
+                Two actions made me realize that I could actually reshape finance, not just participate in it: Reading Joe Nocera's <span className="text-red font-bold">"A Piece of the Action,"</span>
+                and <span className="text-red font-bold">buying fake IDs with Bitcoin</span>. A lot of the tech powering banks and fintechs was a remnant of the stuff that powered
+                Diners Club, while parallel infrastructure was being built that, if adopted, would pull
+                "finance" into the digital age, not retrofit it to paper-based systems.
               </p>
               <p>
-                I didn't realize fintech has been around since the 60s, and I wanted to explore it from as many angles as I could.
+                Fintech is a larger, longer story than I realized, and I wanted to explore it from as many angles as I could.
                 I've spent time at a big bank <span className="text-red font-bold">(Capital One)</span>, as the first engineer at 
                 consumer crypto startup <span className="text-red font-bold">cmorq (now OpenFi)</span>, and now leading a new vertical at 
                 <span className="text-red font-bold"> Brigit</span> after scaling our flagship product through acquisition in 1/2025.
               </p>
               <p>
-                I spend my professional time tinkering with crypto, specifically stablecoins, and looking for ways to blend it with the
-                increasingly-autonomously economy we're barreling towards.
+                We're now at an inflection point where all that I've learned about fintech, at companies with dramatically
+                different makeups, is converging. It's obvious in hindsight that stablecoins were crypto's killer product, and that they
+                created the perfect surface for agents to transact over. We have the building blocks to rebuild finance, and I'm on mission to
+                shape what someone in 2040 will think always existed.
               </p>
             </div>
 
             <div className="space-y-4">
               <h3 className="text-2xl font-bold font-heading text-red">Personal</h3>
               <p>
-                I love to eat. I thought I loved to cook, which I do, but really... I love to eat. It's why I live in New York City, it's why my
-                Beli profile has over 800 ratings. It's why I like to exercise... so I can eat more.
+                I love to eat. I also love to cook, but really... I cook because I love to eat. It's why I live in New York City, it's why my
+                Beli profile has over 800 rankings.
               </p>
               <p>
                 I'm very lucky to have a wife, Abby, who loves to do the same. Our catalogue of meals we excel at
-                runs deep - we've been been known to host "pot luck" dinners where we cook all the food and just ask
+                runs deep - we've been been known to host pot lucks where we cook all the food and just ask
                 people to bring wine and/or dessert. It's gonna be better that way, trust us.
               </p>
               <p>
@@ -58,13 +62,11 @@ export default function About() {
                 meals as if we're working on a line.
               </p>
               <p>
-                Alright, enough about eating. I also try to do a bit of everything. I've been playing the piano since I was 6, I love to
-                exercise (jury's still out on if that's just so I can eat more), I'm getting into golf (my childhood baseball skills don't translate).
-                I'm really loving what I can create with AI because while I don't consider myself the most artistic, I do think I know what looks good.
-                Now, I can build it... or at least get close.
-              </p>
-              <p>
-                Oh, and once we get a dog, this site will become 99% dog pics, 1% resume.
+                If I'm not eating, you can find me playing the piano, meticulously building a travel itinerary,
+                lifting heavy weights, talking with my wife about which dog we want to get when we move out of our tiny
+                1-bedroom apartment, and more recently... golfing (my childhood baseball-playing didn't translate).
+                I'm also really loving what I can do with AI - I'm not artistic, but I do think I know what looks good,
+                and now I can at least get closer to building it!
               </p>
             </div>
           </div>
