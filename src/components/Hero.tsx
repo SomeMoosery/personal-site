@@ -1,21 +1,79 @@
-import { Link } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useRef, useEffect, useState } from 'react';
+import { getAuthUrl, getAccessToken, setStoredToken, getStoredToken } from '../utils/spotify';
+import { useSpotifyPlayer } from '../hooks/useSpotifyPlayer';
+
+const PLAYLIST_URI = `spotify:playlist:${import.meta.env.VITE_SPOTIFY_PLAYLIST_ID}`;
 
 export default function Hero() {
   const lottieRef = useRef<any>(null);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isReady, isPlaying, togglePlay } = useSpotifyPlayer();
+  const hasExchangedToken = useRef(false);
 
+  // Handle OAuth callback
+  useEffect(() => {
+    const code = searchParams.get('code');
+
+    if (code && !hasExchangedToken.current) {
+      hasExchangedToken.current = true;
+      console.log('Authorization code received, exchanging for token...');
+      getAccessToken(code)
+        .then((token) => {
+          console.log('Access token received:', token ? 'Success' : 'Failed');
+          if (token) {
+            setStoredToken(token);
+            setIsAuthenticated(true);
+            console.log('Token stored, navigating to home...');
+            // Clean up URL
+            navigate('/', { replace: true });
+          } else {
+            console.error('No token received from Spotify');
+            hasExchangedToken.current = false;
+          }
+        })
+        .catch((error) => {
+          console.error('Error getting access token:', error);
+          hasExchangedToken.current = false;
+        });
+    } else if (getStoredToken()) {
+      console.log('Using stored token');
+      setIsAuthenticated(true);
+    }
+  }, [searchParams, navigate]);
+
+  // Sync Lottie animation with Spotify playback state
+  useEffect(() => {
+    const element = lottieRef.current;
+    if (!element || !element.dotLottie) return;
+
+    if (isPlaying) {
+      element.dotLottie.play();
+    } else {
+      element.dotLottie.stop();
+    }
+  }, [isPlaying]);
+
+  // Handle Lottie click
   useEffect(() => {
     const element = lottieRef.current;
     if (!element) return;
 
-    const handleClick = () => {
-      const dotLottie = element.dotLottie;
-      if (dotLottie) {
-        if (dotLottie.isPlaying) {
-          dotLottie.stop();
-        } else {
-          dotLottie.play();
-        }
+    const handleClick = async () => {
+      // If not authenticated, redirect to Spotify auth
+      if (!isAuthenticated) {
+        const authUrl = await getAuthUrl();
+        window.location.href = authUrl;
+        return;
+      }
+
+      // Control Spotify playback - Lottie will sync automatically
+      if (isReady) {
+        await togglePlay(PLAYLIST_URI);
+      } else {
+        console.log('Player not ready yet, please wait...');
       }
     };
 
@@ -24,7 +82,8 @@ export default function Hero() {
     return () => {
       element.removeEventListener('click', handleClick);
     };
-  }, []);
+  }, [isAuthenticated, isReady, togglePlay, isPlaying]);
+
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center items-center bg-cream px-4 pt-16 relative">
       {/* Main heading */}
@@ -124,7 +183,13 @@ export default function Hero() {
           />
         </div>
         <p className="text-lg font-bold font-heading text-red mt-2">
-          Click for some ambiance
+          {!isAuthenticated
+            ? 'Click to connect Spotify'
+            : !isReady
+            ? 'Loading player...'
+            : isPlaying
+            ? 'Playing 🎵'
+            : 'Click for some ambiance'}
         </p>
       </div>
     </section>
