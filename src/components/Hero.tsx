@@ -1,8 +1,32 @@
 import { Link } from 'react-router-dom';
+import { useRef, useEffect } from 'react';
 
 export default function Hero() {
+  const lottieRef = useRef<any>(null);
+
+  useEffect(() => {
+    const element = lottieRef.current;
+    if (!element) return;
+
+    const handleClick = () => {
+      const dotLottie = element.dotLottie;
+      if (dotLottie) {
+        if (dotLottie.isPlaying) {
+          dotLottie.stop();
+        } else {
+          dotLottie.play();
+        }
+      }
+    };
+
+    element.addEventListener('click', handleClick);
+
+    return () => {
+      element.removeEventListener('click', handleClick);
+    };
+  }, []);
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center items-center bg-cream px-4 pt-16">
+    <section id="hero" className="min-h-screen flex flex-col justify-center items-center bg-cream px-4 pt-16 relative">
       {/* Main heading */}
       <div className="text-center mb-12">
         <h1 className="text-6xl md:text-8xl font-bold mb-6 font-heading text-red">
@@ -79,12 +103,23 @@ export default function Hero() {
         to="/reservations"
         className="bg-red text-white px-8 py-4 text-lg font-heading hover:bg-green transition-all duration-300 transform hover:scale-105"
       >
-        Reserve a Table
+        Book some time
       </Link>
 
       {/* Rotating element */}
       <div className="mt-12 animate-spin-slow text-6xl text-green">
         ✦
+      </div>
+
+      {/* Lottie Animation - Bottom Right */}
+      <div className="absolute bottom-8 right-8 cursor-pointer">
+        {/* @ts-ignore - web component */}
+        <dotlottie-wc
+          ref={lottieRef}
+          src="https://lottie.host/dd10aa3e-1c62-43de-b554-80ef77c2de40/yCbNKVsaDn.lottie"
+          style={{ width: '300px', height: '300px' }}
+          loop
+        />
       </div>
     </section>
   );
