@@ -1,159 +1,53 @@
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { useRef, useEffect, useState } from 'react';
-import { getAuthUrl, getAccessToken, setStoredToken, getStoredToken } from '../utils/spotify';
-import { useSpotifyPlayer } from '../hooks/useSpotifyPlayer';
+import { DECKS_H, DECKS_W, useDj } from '../context/dj';
+import { usePageTransition } from '../context/pageTransition';
+import PhotoScatter from './PhotoScatter';
+import InkTrail from './InkTrail';
+import TransitionLink from './TransitionLink';
 
-const PLAYLIST_URI = `spotify:playlist:${import.meta.env.VITE_SPOTIFY_PLAYLIST_ID}`;
+const NAV_LINKS = [
+  { name: 'Menu', path: '/menu' },
+  // { name: 'Reservations', path: '/reservations' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
+];
 
 export default function Hero() {
-  const lottieRef = useRef<any>(null);
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const { isReady, isPlaying, togglePlay } = useSpotifyPlayer();
-  const hasExchangedToken = useRef(false);
+  const { setSlot } = useDj();
+  const { leaving } = usePageTransition();
 
-  // Handle OAuth callback
-  useEffect(() => {
-    const code = searchParams.get('code');
-
-    if (code && !hasExchangedToken.current) {
-      hasExchangedToken.current = true;
-      console.log('Authorization code received, exchanging for token...');
-      getAccessToken(code)
-        .then((token) => {
-          console.log('Access token received:', token ? 'Success' : 'Failed');
-          if (token) {
-            setStoredToken(token);
-            setIsAuthenticated(true);
-            console.log('Token stored, navigating to home...');
-            // Clean up URL
-            navigate('/', { replace: true });
-          } else {
-            console.error('No token received from Spotify');
-            hasExchangedToken.current = false;
-          }
-        })
-        .catch((error) => {
-          console.error('Error getting access token:', error);
-          hasExchangedToken.current = false;
-        });
-    } else if (getStoredToken()) {
-      console.log('Using stored token');
-      setIsAuthenticated(true);
-    }
-  }, [searchParams, navigate]);
-
-  // Sync Lottie animation with Spotify playback state
-  useEffect(() => {
-    const element = lottieRef.current;
-    if (!element || !element.dotLottie) return;
-
-    if (isPlaying) {
-      element.dotLottie.play();
-    } else {
-      element.dotLottie.stop();
-    }
-  }, [isPlaying]);
-
-  // Handle Lottie click
-  useEffect(() => {
-    const element = lottieRef.current;
-    if (!element) return;
-
-    const handleClick = async () => {
-      // If not authenticated, redirect to Spotify auth
-      if (!isAuthenticated) {
-        const authUrl = await getAuthUrl();
-        window.location.href = authUrl;
-        return;
-      }
-
-      // Control Spotify playback - Lottie will sync automatically
-      if (isReady) {
-        await togglePlay(PLAYLIST_URI);
-      } else {
-        console.log('Player not ready yet, please wait...');
-      }
-    };
-
-    element.addEventListener('click', handleClick);
-
-    return () => {
-      element.removeEventListener('click', handleClick);
-    };
-  }, [isAuthenticated, isReady, togglePlay, isPlaying]);
+  const exit = leaving ? 'hero-out' : '';
 
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center items-center bg-cream px-4 pt-16 relative">
+    <section id="hero" className="min-h-screen flex flex-col justify-center items-center bg-cream px-4 pt-16 pb-12 relative overflow-clip">
+      <InkTrail />
+
       {/* Main heading */}
-      <div className="text-center mb-12">
-        <h1 className="text-6xl md:text-8xl font-bold mb-6 font-heading text-red">
+      <div className={`text-center mb-12 relative z-20 ${exit}`}>
+        <h1 className="wordmark text-6xl md:text-8xl font-bold mb-6 font-heading text-red">
           Carter Klein
         </h1>
         <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto font-body text-red mb-8">
-          <span className="text-sm font-bold font-heading text-red mt-2 inline-flex items-center justify-center px-2 py-1 border-2 border-red mr-3" style={{ borderRadius: '50% 45% 50% 45%', transform: 'rotate(-2deg)' }}>Brooklyn</span> Cooking up financial infrastructure <span className="text-sm font-bold font-heading text-red mt-2 inline-flex items-center justify-center px-2 py-1 border-2 border-red ml-3" style={{ borderRadius: '48% 52% 48% 52%', transform: 'rotate(1deg)' }}>New York City</span>
+          Cooking up financial infrastructure <span className="text-sm font-bold font-heading text-red mt-2 inline-flex items-center justify-center px-2 py-1 border-2 border-red ml-3" style={{ borderRadius: '50% 45% 50% 45%', transform: 'rotate(-2deg)' }}>Brooklyn</span>
         </p>
 
         {/* Navigation links */}
         <nav className="flex justify-center items-center space-x-8 mt-4">
-          <Link to="/menu" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
-            Menu
-          </Link>
-          {/* <Link to="/reservations" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
-            Reservations
-          </Link> */}
-          <Link to="/about" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
-            About
-          </Link>
-          <Link to="/contact" className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase">
-            Contact
-          </Link>
+          {NAV_LINKS.map((link) => (
+            <TransitionLink
+              key={link.path}
+              to={link.path}
+              className="text-xl font-bold font-heading text-green hover:text-red transition-colors uppercase"
+            >
+              {link.name}
+            </TransitionLink>
+          ))}
         </nav>
       </div>
 
-      {/* Wavy Animated Marquee */}
-      <div className="w-full overflow-hidden bg-cream text-green py-4 mb-6 relative">
-        <svg
-          className="w-full"
-          viewBox="0 0 2000 180"
-          preserveAspectRatio="xMidYMid slice"
-          style={{ height: '110px' }}
-        >
-          <defs>
-            <path
-              id="wave-marquee-path"
-              d="M 0,90 Q 125,50 250,90 T 500,90 T 750,90 T 1000,90 T 1250,90 T 1500,90 T 1750,90 T 2000,90 T 2250,90 T 2500,90 T 2750,90 T 3000,90 T 3250,90 T 3500,90 T 3750,90 T 4000,90"
-              fill="none"
-            />
-          </defs>
-          <text
-            fill="currentColor"
-            className="text-green"
-            style={{
-              fontSize: '52px',
-              fontWeight: '800',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              fontFamily: '"obviously-narrow", Arial Narrow, Arial, sans-serif'
-            }}
-          >
-            <textPath href="#wave-marquee-path" startOffset="0" method="stretch" spacing="exact">
-              Fresh ingredients 〰 modern technique 〰 classic dishes 〰 Fresh ingredients 〰 modern technique 〰 classic dishes 〰 Fresh ingredients 〰 modern technique 〰 classic dishes 〰 Fresh ingredients 〰 modern technique 〰 classic dishes 〰
-              <animate
-                attributeName="startOffset"
-                from="0"
-                to="-2000"
-                dur="20s"
-                repeatCount="indefinite"
-              />
-            </textPath>
-          </text>
-        </svg>
-      </div>
+      <PhotoScatter leaving={leaving} />
 
       {/* Decorative squiggles */}
-      <div className="text-4xl text-red mb-8">
+      <div className={`text-4xl text-red mb-8 relative z-20 ${exit}`}>
         <span className="hidden md:inline">〰〰〰〰〰〰</span>
         <span>〰〰〰〰〰〰</span>
       </div>
@@ -166,31 +60,20 @@ export default function Hero() {
         Book some time
       </Link> */}
 
-      {/* Rotating element */}
-      <div className="mt-12 animate-spin-slow text-6xl text-green">
-        ✦
+      {/* The decks float over this slot (see Decks.tsx), flanked by stars on desktop */}
+      <div className="relative z-20 flex items-center justify-center gap-10">
+        <div className={`hidden md:block ${exit}`}>
+          <div className="animate-spin-slow text-6xl text-green">✦</div>
+        </div>
+        <div ref={setSlot} style={{ width: DECKS_W, height: DECKS_H }} aria-hidden="true" />
+        <div className={`hidden md:block ${exit}`}>
+          <div className="animate-spin-slow text-6xl text-green">✦</div>
+        </div>
       </div>
 
-      {/* Lottie Animation - Mobile: below rotating element, Desktop: bottom right */}
-      <div className="mt-8 md:mt-0 md:absolute md:bottom-8 md:right-8 flex flex-col items-center">
-        <div className="cursor-pointer overflow-hidden" style={{ height: '175px', marginBottom: '-60px' }}>
-          {/* @ts-ignore - web component */}
-          <dotlottie-wc
-            ref={lottieRef}
-            src="https://lottie.host/dd10aa3e-1c62-43de-b554-80ef77c2de40/yCbNKVsaDn.lottie"
-            style={{ width: '300px', height: '300px', marginTop: '-85px' }}
-            loop
-          />
-        </div>
-        <p className="text-lg font-bold font-heading text-red mt-2">
-          {!isAuthenticated
-            ? 'Connect to Spotify and set the mood'
-            : !isReady
-            ? 'Loading player...'
-            : isPlaying
-            ? 'Now we\'re talking'
-            : 'Set the mood'}
-        </p>
+      {/* Mobile: one star under the decks */}
+      <div className={`md:hidden mt-6 relative z-20 ${exit}`}>
+        <div className="animate-spin-slow text-6xl text-green">✦</div>
       </div>
     </section>
   );

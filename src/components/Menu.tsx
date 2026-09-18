@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import TransitionLink from './TransitionLink';
 
 export default function Menu() {
   const menuCategories = [
@@ -62,13 +62,13 @@ export default function Menu() {
                         {content}
                       </a>
                     ) : (
-                      <Link
+                      <TransitionLink
                         key={itemIdx}
                         to={item.link}
                         className="block border-b-2 border-red/30 pb-4 hover:border-red transition-colors cursor-pointer"
                       >
                         {content}
-                      </Link>
+                      </TransitionLink>
                     )
                   ) : (
                     <div key={itemIdx} className="border-b-2 border-red/30 pb-4 hover:border-red transition-colors">

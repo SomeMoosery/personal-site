@@ -60,3 +60,399 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Hallmark · studied: yes · DNA-source: url (publicrecords.nyc, primary; bongnyc.com, tam-tam-mia.com)
+ * macrostructure: existing centred marquee hero + Public Records edge-cluster photo scatter
+ * theme: existing brand tokens (cream / green / red) · motion: parallax drift · drag · ink trail
+ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --shadow-lift: 0 18px 40px -12px rgb(24 63 39 / 0.45);
+}
+
+/* DJ decks: sit over the hero slot on the homepage, dock bottom-right elsewhere */
+.decks-dock {
+  position: absolute;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.decks-dock.is-docked {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+}
+
+/* The drawing is the top 115px of the button; the label sits under it */
+.decks-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 115px;
+  display: flex;
+  justify-content: center;
+  transform-origin: bottom right;
+  transition: transform 650ms var(--ease-in-out);
+}
+
+.is-docked .decks-body {
+  transform: translateY(55px) scale(0.5);
+}
+
+.decks-label {
+  position: absolute;
+  top: 123px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.is-docked .decks-label {
+  top: auto;
+  left: auto;
+  right: 158px;
+  bottom: 6px;
+  max-width: min(240px, calc(100vw - 200px));
+  padding: 0.25rem 0.5rem;
+  text-align: right;
+  background: theme('colors.cream');
+  animation: photo-fade 200ms var(--ease-out) 550ms both;
+}
+
+.decks,
+.decks-label a {
+  pointer-events: auto;
+}
+
+.decks {
+  cursor: pointer;
+}
+
+.decks:focus-visible {
+  outline: 3px solid theme('colors.red');
+  outline-offset: 3px;
+}
+
+/* Contact: status dot on the door. Pulses once when open, never loops. */
+.status-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: theme('colors.red');
+}
+
+.status-dot.is-open {
+  background: theme('colors.green');
+  animation: status-pulse 1.2s var(--ease-out) 400ms 2;
+}
+
+@keyframes status-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(24 63 39 / 0.5); }
+  100% { box-shadow: 0 0 0 0.75rem rgb(24 63 39 / 0); }
+}
+
+/* Contact: the diner guest check */
+.guest-check {
+  --check-paper: #fbfaf4;
+  position: relative;
+  background: var(--check-paper);
+  border: 2px solid theme('colors.green');
+  box-shadow: 6px 6px 0 theme('colors.green');
+  transform: rotate(-1.2deg);
+  padding-bottom: 1.25rem;
+}
+
+/* Tear-off edge along the top */
+.guest-check::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: -9px;
+  height: 9px;
+  background: radial-gradient(circle at 6px 9px, var(--check-paper) 5px, transparent 5.5px) repeat-x;
+  background-size: 12px 9px;
+}
+
+.guest-check-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: theme('colors.red');
+  color: theme('colors.cream');
+  font-family: theme('fontFamily.heading');
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.guest-check-body {
+  margin: 0;
+  padding: 0 1.25rem;
+}
+
+.guest-check-line {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgb(24 63 39 / 0.2);
+}
+
+.guest-check-line dt {
+  font-family: theme('fontFamily.heading');
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: theme('colors.red');
+}
+
+.guest-check-line dd {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 0;
+  font-size: 1.05rem;
+}
+
+.guest-check-line a {
+  color: theme('colors.green');
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: rgb(242 23 10 / 0.35);
+  text-underline-offset: 4px;
+  transition: color 160ms var(--ease-out), text-decoration-color 160ms var(--ease-out);
+}
+
+.guest-check-line a:hover {
+  color: theme('colors.red');
+  text-decoration-color: theme('colors.red');
+}
+
+.guest-check-line a:focus-visible,
+.copy-button:focus-visible {
+  outline: 3px solid theme('colors.red');
+  outline-offset: 2px;
+}
+
+.copy-button {
+  font-family: theme('fontFamily.heading');
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border: 2px solid theme('colors.green');
+  color: theme('colors.green');
+  background: transparent;
+  white-space: nowrap;
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+
+.copy-button:hover {
+  background: theme('colors.green');
+  color: theme('colors.cream');
+}
+
+.copy-button:active {
+  transform: translateY(1px);
+}
+
+.guest-check-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.5rem 1.25rem 0;
+  padding: 0.85rem 0 0.5rem;
+  border-top: 3px double theme('colors.green');
+  font-family: theme('fontFamily.heading');
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.guest-check-total span:last-child {
+  color: theme('colors.red');
+}
+
+.guest-check-foot {
+  margin: 0.25rem 1.25rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgb(24 63 39 / 0.75);
+}
+
+/* Contact: hours, one line per day */
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 2px solid rgb(242 23 10 / 0.3);
+  font-size: 1.05rem;
+}
+
+.hours-list li span:first-child {
+  font-family: theme('fontFamily.heading');
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hours-list li.is-today {
+  background: theme('colors.green');
+  color: theme('colors.cream');
+  border-bottom-color: theme('colors.green');
+}
+
+.hours-list li.is-today span:first-child::after {
+  content: ' · today';
+  color: theme('colors.cream');
+  opacity: 0.8;
+}
+
+/* BONG-style extrusion on the wordmark, in the site's own green */
+.wordmark {
+  text-shadow: 0.045em 0.045em 0 theme('colors.green');
+}
+
+.scatter-photo {
+  cursor: grab;
+  will-change: transform;
+}
+
+.scatter-photo img,
+.pile-photo img {
+  transition: box-shadow 200ms var(--ease-out);
+}
+
+.scatter-photo.is-dragging {
+  cursor: grabbing;
+}
+
+.scatter-photo.is-dragging img {
+  box-shadow: var(--shadow-lift);
+}
+
+
+
+.pile-photo:focus-visible,
+.reset-table:focus-visible {
+  outline: 3px solid theme('colors.red');
+  outline-offset: 3px;
+}
+
+.reset-table {
+  font-family: theme('fontFamily.heading');
+  font-weight: 800;
+  text-transform: uppercase;
+  color: theme('colors.green');
+  animation: photo-in 300ms var(--ease-out) both;
+}
+
+.reset-table:hover {
+  color: theme('colors.red');
+}
+
+.photo-in {
+  animation: photo-in 700ms var(--ease-out) both;
+}
+
+/* Leaving the homepage: photos fly off the sides, text lifts away */
+.photo-out {
+  animation: photo-out 450ms var(--ease-in) both;
+}
+
+@keyframes photo-out {
+  to {
+    transform: translate(var(--out-x), var(--out-y)) rotate(var(--out-r));
+    opacity: 0;
+  }
+}
+
+.hero-out {
+  animation: hero-out 380ms var(--ease-in) both;
+}
+
+@keyframes hero-out {
+  to { transform: translateY(-24px); opacity: 0; }
+}
+
+/* Page text: the old page lifts and fades while its photos leave, the new one settles in.
+   Both end on transform: none so the wrapper never becomes a containing block for fixed children. */
+.page-in {
+  animation: page-in 500ms var(--ease-out) both;
+}
+
+.page-out {
+  animation: page-out 380ms var(--ease-in) 120ms both;
+}
+
+.page-fade {
+  animation: photo-fade 400ms var(--ease-out) both;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes page-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-14px); }
+}
+
+/* Inner pages: gutter photos slide in from their side, and back out on the way to another page */
+.margin-in {
+  animation: margin-in 700ms var(--ease-out) both;
+}
+
+.margin-out {
+  animation: margin-out 420ms var(--ease-in) both;
+}
+
+@keyframes margin-out {
+  to {
+    transform: translate(var(--in-x), 0) rotate(var(--in-r));
+    opacity: 0;
+  }
+}
+
+@keyframes margin-in {
+  from {
+    transform: translate(var(--in-x), 0) rotate(var(--in-r));
+    opacity: 0;
+  }
+}
+
+@keyframes photo-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-in,
+  .margin-in,
+  .page-in,
+  .reset-table {
+    animation: photo-fade 150ms linear both;
+  }
+  .decks-body {
+    transition: none;
+  }
+  .status-dot.is-open {
+    animation: none;
+  }
+}
+
+@keyframes photo-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
