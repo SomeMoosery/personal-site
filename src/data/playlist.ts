@@ -1,6 +1,9 @@
-// Carter's "Operating" playlist, matched to Apple Music catalog IDs.
+// The songs the DJ decks play: Carter's "Operating" playlist, matched to Apple Music IDs.
 // Preview URLs are looked up fresh at runtime (they rotate), so only IDs live here.
 // Street Sounds (Disco Galaxy) and ALICE. (jev.) aren't in Apple's US catalog.
+//
+// To add a song: `npm run find-track -- "song title artist"`, then paste the line it prints.
+// To remove one: delete its line. Order doesn't matter; the set is shuffled on every visit.
 export type PlaylistEntry = { id: number; title: string; artist: string };
 
 export const PLAYLIST: PlaylistEntry[] = [

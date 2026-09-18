@@ -385,6 +385,30 @@ html {
   to { transform: translateY(-24px); opacity: 0; }
 }
 
+/* Page text: the old page lifts and fades while its photos leave, the new one settles in.
+   Both end on transform: none so the wrapper never becomes a containing block for fixed children. */
+.page-in {
+  animation: page-in 500ms var(--ease-out) both;
+}
+
+.page-out {
+  animation: page-out 380ms var(--ease-in) 120ms both;
+}
+
+.page-fade {
+  animation: photo-fade 400ms var(--ease-out) both;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes page-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-14px); }
+}
+
 /* Inner pages: gutter photos slide in from their side, and back out on the way to another page */
 .margin-in {
   animation: margin-in 700ms var(--ease-out) both;
@@ -416,6 +440,7 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .photo-in,
   .margin-in,
+  .page-in,
   .reset-table {
     animation: photo-fade 150ms linear both;
   }

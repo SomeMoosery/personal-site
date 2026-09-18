@@ -173,12 +173,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-
-        {/* Sign-off */}
-        <div className="mt-20 text-center">
-          <p className="font-heading font-bold uppercase text-4xl md:text-5xl text-red">Grazie ✦</p>
-          <div className="text-3xl text-red mt-4">〰〰〰</div>
-        </div>
       </div>
     </section>
   );

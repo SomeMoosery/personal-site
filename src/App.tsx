@@ -10,10 +10,12 @@ import AgentsAsPeople from './components/posts/AgentsAsPeople'
 import DjProvider from './components/DjProvider'
 import Decks from './components/Decks'
 import PageTransitionProvider from './components/PageTransitionProvider'
+import { usePageTransition } from './context/pageTransition'
 
 function AppContent() {
   const location = useLocation()
   const isHomePage = location.pathname === '/'
+  const { leaving } = usePageTransition()
 
   // Each page starts at the top instead of inheriting the last page's scroll
   useEffect(() => {
@@ -23,14 +25,18 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-cream">
       {!isHomePage && <Navigation />}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/reservations" element={<ReservationsPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/blog/thoughts-on-agent-vaults" element={<AgentsAsPeople />} />
-      </Routes>
+      {/* Re-keyed per route so every page animates in. The homepage only fades (the decks
+          measure their slot on arrival, so it can't move) and runs its own exit. */}
+      <div key={location.pathname} className={isHomePage ? 'page-fade' : leaving ? 'page-out' : 'page-in'}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/reservations" element={<ReservationsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog/thoughts-on-agent-vaults" element={<AgentsAsPeople />} />
+        </Routes>
+      </div>
       <Decks />
     </div>
   )
