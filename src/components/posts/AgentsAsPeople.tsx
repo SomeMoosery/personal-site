@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
+import TransitionLink from '../TransitionLink';
 
 export default function AgentsAsPeople() {
   return (
     <section className="min-h-screen py-20 px-4 bg-cream">
       <div className="max-w-3xl mx-auto">
         {/* Back button */}
-        <Link
+        <TransitionLink
           to="/menu"
           className="inline-block mb-8 text-green hover:text-red transition-colors font-heading"
         >
           ← Back to Menu
-        </Link>
+        </TransitionLink>
 
         {/* Article Header */}
         <article className="bg-cream">
@@ -168,12 +168,12 @@ export default function AgentsAsPeople() {
 
           {/* Footer */}
           <footer className="mt-16 pt-8 border-t-2 border-red/30">
-            <Link
+            <TransitionLink
               to="/menu"
               className="inline-block px-6 py-3 bg-red text-cream font-heading hover:bg-green transition-colors"
             >
               Explore More Posts
-            </Link>
+            </TransitionLink>
           </footer>
         </article>
       </div>

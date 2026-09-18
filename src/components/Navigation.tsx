@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import TransitionLink from './TransitionLink';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,12 +9,12 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link
+          <TransitionLink
             to="/"
             className="text-2xl font-bold font-heading text-green hover:text-red transition-colors"
           >
             Home
-          </Link>
+          </TransitionLink>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
@@ -24,13 +24,13 @@ export default function Navigation() {
               { name: 'About', path: '/about' },
               { name: 'Contact', path: '/contact' },
             ].map((item) => (
-              <Link
+              <TransitionLink
                 key={item.path}
                 to={item.path}
                 className="text-2xl font-bold font-heading text-green hover:text-red transition-colors"
               >
                 {item.name}
-              </Link>
+              </TransitionLink>
             ))}
           </div>
 
@@ -52,14 +52,14 @@ export default function Navigation() {
               { name: 'About', path: '/about' },
               { name: 'Contact', path: '/contact' },
             ].map((item) => (
-              <Link
+              <TransitionLink
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 className="block w-full text-left py-2 text-2xl font-bold font-heading text-green hover:text-red transition-colors"
               >
                 {item.name}
-              </Link>
+              </TransitionLink>
             ))}
           </div>
         )}
